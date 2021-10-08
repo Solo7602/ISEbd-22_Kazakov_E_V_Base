@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="BuldozerBase.cs" />
     <Compile Include="enum.cs" />
+    <Compile Include="ParkingPlace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParkingPlace.Designer.cs">
+      <DependentUpon>ParkingPlace.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBulldozer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,9 +62,13 @@
     </Compile>
     <Compile Include="IBuldozer.cs" />
     <Compile Include="ModBuldozer.cs" />
+    <Compile Include="Parking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VehicleBuldozer.cs" />
+    <EmbeddedResource Include="ParkingPlace.resx">
+      <DependentUpon>ParkingPlace.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormBulldozer.resx">
       <DependentUpon>FormBulldozer.cs</DependentUpon>
     </EmbeddedResource>

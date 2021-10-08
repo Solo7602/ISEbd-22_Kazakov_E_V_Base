@@ -17,7 +17,12 @@ namespace labaBuldozerKazakovISEbd_22
 		{
 			InitializeComponent();
 		}
-		private void Draw()
+		public void SetBuldozer(IBuldozer buldozer)
+		{
+			this.buldozer = buldozer;
+			Draw();
+		}
+			private void Draw()
 		{
 			Bitmap bmp = new Bitmap(Picture.Width, Picture.Height);
 			Graphics gr = Graphics.FromImage(bmp);
