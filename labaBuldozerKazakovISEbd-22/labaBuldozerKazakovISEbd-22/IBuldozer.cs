@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace labaBuldozerKazakovISEbd_22
 {
-	interface IBuldozer
+	public interface IBuldozer
 	{
         /// <summary>
         /// Установка позиции
