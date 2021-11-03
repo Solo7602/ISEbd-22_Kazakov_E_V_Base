@@ -37,7 +37,11 @@ namespace labaBuldozerKazakovISEbd_22
         /// Основной цвет кузова
         /// </summary>
         public Color MainColor { protected set; get; }
-        public void SetPosition(int x, int y, int width, int height)
+        public void SetMainColor(Color color)
+        {
+            MainColor = color;
+        }
+            public void SetPosition(int x, int y, int width, int height)
         {
             _startPosX = x;
             _startPosY = y;

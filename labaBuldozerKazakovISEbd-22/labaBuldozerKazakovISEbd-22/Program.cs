@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace labaBuldozerKazakovISEbd_22
+namespace labaBuldozerKazakovISEbd_22	
 {
+	public delegate void BulldozerDelegate(VehicleBuldozer bulldozer);
 	static class Program
 	{
 		/// <summary>
