@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace labaBuldozerKazakovISEbd_22	
 {
-	public delegate void BulldozerDelegate(VehicleBuldozer bulldozer);
+	//public delegate void BulldozerDelegate(VehicleBuldozer bulldozer);
 	static class Program
 	{
 		/// <summary>

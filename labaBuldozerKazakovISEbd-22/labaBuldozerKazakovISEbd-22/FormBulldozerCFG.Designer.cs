@@ -248,6 +248,7 @@ namespace labaBuldozerKazakovISEbd_22
             this.labelForDopColor.TabIndex = 1;
             this.labelForDopColor.Text = "Дополнительный цвет";
             this.labelForDopColor.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelForDopColor_DragDrop);
+            this.labelForDopColor.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelForMainColor_DragEnter);
             // 
             // panelRed
             // 
