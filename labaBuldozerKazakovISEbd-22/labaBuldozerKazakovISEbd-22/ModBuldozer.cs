@@ -39,5 +39,9 @@ namespace labaBuldozerKazakovISEbd_22
             }
             base.DrawTransport(g);
         }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
     }
 }

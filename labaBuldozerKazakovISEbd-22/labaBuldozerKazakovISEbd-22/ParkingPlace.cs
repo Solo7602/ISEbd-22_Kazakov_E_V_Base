@@ -75,52 +75,7 @@ MessageBoxIcon.Question) == DialogResult.Yes)
 					ReloadLevels();
 				}
 			}
-		}
-		private void parkBuldozer_Click(object sender, EventArgs e)
-		{
-			if (listBoxParking.SelectedIndex > -1)
-			{
-				ColorDialog dialog = new ColorDialog();
-				if (dialog.ShowDialog() == DialogResult.OK)
-				{
-					var bulldozer = new BuldozerBase(100, 1000, dialog.Color);
-					if (parkingCollection[listBoxParking.SelectedItem.ToString()] +
-				   bulldozer)
-					{
-						Draw();
-					}
-					else
-					{
-						MessageBox.Show("Парковка переполнена");
-					}
-				}
-			}
-		}
-		private void parkModBuldozer_Click(object sender, EventArgs e)
-		{
-			if (listBoxParking.SelectedIndex > -1)
-			{
-				ColorDialog dialog = new ColorDialog();
-				if (dialog.ShowDialog() == DialogResult.OK)
-				{
-					ColorDialog dialogDop = new ColorDialog();
-					if (dialogDop.ShowDialog() == DialogResult.OK)
-					{
-						var bulldozer = new ModBuldozer(100, 1000, dialog.Color,
-					   dialogDop.Color, true, true);
-						if (parkingCollection[listBoxParking.SelectedItem.ToString()]
-+ bulldozer)
-						{
-							Draw();
-						}
-						else
-						{
-							MessageBox.Show("Парковка переполнена");
-						}
-					}
-				}
-			}
-		}
+		}	
 
 		private void OutBuldozer_Click(object sender, EventArgs e)
 		{
@@ -140,6 +95,27 @@ MessageBoxIcon.Question) == DialogResult.Yes)
 		private void listBoxParking_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			Draw();
+		}
+
+        private void buttonPark_Click(object sender, EventArgs e)
+        {
+			var formCarConfig = new FormBulldozerCFG();
+			formCarConfig.AddEvent(AddCar);
+			formCarConfig.Show();
+		}
+		private void AddCar(VehicleBuldozer car)
+		{
+			if (car != null && listBoxParking.SelectedIndex > -1)
+			{
+				if ((parkingCollection[listBoxParking.SelectedItem.ToString()]) + car)
+				{
+					Draw();
+				}
+				else
+				{
+					MessageBox.Show("Машину не удалось поставить");
+				}
+			}
 		}
 
 	}
