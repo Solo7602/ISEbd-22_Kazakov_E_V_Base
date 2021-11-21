@@ -19,6 +19,20 @@ namespace labaBuldozerKazakovISEbd_22
             BackSpoiler = backSpoiler;
             Bucket = bucket;
         }
+        public ModBuldozer(string info) : base(info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 6)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromArgb(Convert.ToInt32(strs[2]));
+                DopColor = Color.FromArgb(Convert.ToInt32(strs[3]));
+                BackSpoiler = Convert.ToBoolean(strs[4]);
+                Bucket = Convert.ToBoolean(strs[5]);
+            }
+        }
+
         public override void DrawTransport(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -43,5 +57,12 @@ namespace labaBuldozerKazakovISEbd_22
         {
             DopColor = color;
         }
+        public override string ToString()
+        {
+            return
+           $"{base.ToString()}{separator}{DopColor.ToArgb()}{separator}{BackSpoiler}{separator}{Bucket}";
+        }
+
+
     }
 }

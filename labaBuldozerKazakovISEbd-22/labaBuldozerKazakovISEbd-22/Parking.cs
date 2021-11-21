@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +19,7 @@ namespace labaBuldozerKazakovISEbd_22
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
-            _maxCount = width * height;
+            _maxCount = width * height; 
             pictureWidth = picWidth;
             pictureHeight = picHeight;
             _places = new List<T>();
@@ -50,7 +50,7 @@ namespace labaBuldozerKazakovISEbd_22
             DrawMarking(g);
             for (int i = 0; i < _places.Count; i++)
             {
-                _places[i].SetPosition(i % width * _placeSizeWidth + changeHeight,
+                _places[i].SetPosition((i % width * _placeSizeWidth) + changeHeight,
                     i / width * _placeSizeHeight + changeHeight, pictureWidth,
                     pictureHeight);
                 _places[i].DrawTransport(g);
@@ -70,6 +70,14 @@ namespace labaBuldozerKazakovISEbd_22
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth,
               (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
             }
+        }
+        public T GetNext(int index)
+        {
+            if (index < 0 || index >= _places.Count)
+            {
+                return null;
+            }
+            return _places[index];
         }
     }
 }

@@ -149,5 +149,6 @@ DragDropEffects.Copy);
             eventAddCar?.Invoke(bulldozer);
             Close();
         }
+
     }
 }
