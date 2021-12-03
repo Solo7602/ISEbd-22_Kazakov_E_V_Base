@@ -52,7 +52,7 @@ namespace labaBuldozerKazakovISEbd_22
 		/// </summary>
 		/// <param name="filename">Путь и имя файла</param>
 		/// <returns></returns>
-		public bool SaveData(string filename)
+		public void SaveData(string filename)
 		{
 			if (File.Exists(filename))
 			{
@@ -86,13 +86,12 @@ namespace labaBuldozerKazakovISEbd_22
 					}
 				}
 			}
-			return true;
 		}
-		public bool LoadData(string filename)
+		public void LoadData(string filename)
 		{
 			if (!File.Exists(filename))
 			{
-				return false;
+				throw new FileNotFoundException();
 			}
 			string bufferTextFromFile = "";
 			using (StreamReader sr = new StreamReader(filename))
@@ -105,8 +104,7 @@ namespace labaBuldozerKazakovISEbd_22
 			}
 			else
 			{
-				//если нет такой записи, то это не те данные
-				return false;
+				throw new FileLoadException("Неверный формат файла");
 			}
 			VehicleBuldozer buldozer = null;
 			string key = string.Empty;
@@ -136,11 +134,10 @@ namespace labaBuldozerKazakovISEbd_22
 				var result = parkingStages[key] + buldozer;
 					if (!result)
 					{
-						return false;
+						throw new FileLoadException("Не удалось загрузить автомобиль на парковку");
 					}
 				}
 			}
-			return true;
 		}
 	}
 }
