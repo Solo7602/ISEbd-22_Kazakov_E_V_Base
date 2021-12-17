@@ -1,4 +1,5 @@
-﻿    using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,8 @@ using System.Drawing;
 
 namespace labaBuldozerKazakovISEbd_22
 {
-        public class Parking<T> where T : class, IBuldozer
+        public class Parking<T> : IEnumerator<T>, IEnumerable<T>
+        where T : class, IBuldozer
     {
             private readonly List<T> _places;
         private readonly int _maxCount;
@@ -15,6 +17,9 @@ namespace labaBuldozerKazakovISEbd_22
             private readonly int pictureHeight;
             private readonly int _placeSizeWidth = 305;
             private readonly int _placeSizeHeight = 160;
+        private int _currentIndex;
+        public T Current => _places[_currentIndex];
+        object IEnumerator.Current => _places[_currentIndex];
         public Parking(int picWidth, int picHeight)
         {
             int width = picWidth / _placeSizeWidth;
@@ -23,12 +28,17 @@ namespace labaBuldozerKazakovISEbd_22
             pictureWidth = picWidth;
             pictureHeight = picHeight;
             _places = new List<T>();
+            _currentIndex = -1;
         }
         public static bool operator +(Parking<T> p, T bulldozer)
         {
             if (p._places.Count >= p._maxCount)
             {
 				throw new ParkingOverflowException();
+            }
+            if (p._places.Contains(bulldozer))
+            {
+                throw new ParkingAlreadyHaveException();
             }
             p._places.Add(bulldozer);
             return true;
@@ -79,6 +89,48 @@ namespace labaBuldozerKazakovISEbd_22
             }
             return _places[index];
         }
+        public void Sort() => _places.Sort((IComparer<T>)new BulldozerCompare());
+        /// <summary>
+        /// </summary>
+        public void Dispose()
+        {
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для перехода к следующему элементу или началу
+        ///коллекции
+        /// </summary>
+        /// <returns></returns>
+        public bool MoveNext()
+        {
+            _currentIndex++;
+            if (_currentIndex >= _places.Count)
+            {
+                Reset();
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для сброса и возврата к началу коллекции
+        /// </summary>
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerable
+        /// </summary>
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerable
+        /// </summary>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this;
+        }
     }
 }
            

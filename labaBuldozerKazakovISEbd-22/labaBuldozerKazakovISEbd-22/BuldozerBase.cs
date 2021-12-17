@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.Drawing;
 namespace labaBuldozerKazakovISEbd_22
 {
-	public class BuldozerBase : VehicleBuldozer
-	{
+	public class BuldozerBase : VehicleBuldozer, IEquatable<BuldozerBase>
+    {
         /// <summary>
         /// Ширина отрисовки автомобиля
         /// </summary>
@@ -121,6 +121,45 @@ namespace labaBuldozerKazakovISEbd_22
         public override string ToString()
         {
             return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.ToArgb()}";
+        }
+        public bool Equals(BuldozerBase other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is BuldozerBase bulObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(bulObj);
+            }
         }
     }
 }
