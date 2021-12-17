@@ -46,6 +46,7 @@
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.buttonSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxforParking)).BeginInit();
             this.groupBoxforbutton.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -86,6 +87,7 @@
             // 
             // groupBoxforbutton
             // 
+            this.groupBoxforbutton.Controls.Add(this.buttonSort);
             this.groupBoxforbutton.Controls.Add(this.buttonPark);
             this.groupBoxforbutton.Controls.Add(this.button_del_parking);
             this.groupBoxforbutton.Controls.Add(this.listBoxParking);
@@ -104,7 +106,7 @@
             // 
             // buttonPark
             // 
-            this.buttonPark.Location = new System.Drawing.Point(5, 230);
+            this.buttonPark.Location = new System.Drawing.Point(6, 288);
             this.buttonPark.Name = "buttonPark";
             this.buttonPark.Size = new System.Drawing.Size(110, 42);
             this.buttonPark.TabIndex = 13;
@@ -208,6 +210,16 @@
             // 
             this.saveFileDialog.Filter = "txt file | *.txt";
             // 
+            // buttonSort
+            // 
+            this.buttonSort.Location = new System.Drawing.Point(6, 229);
+            this.buttonSort.Name = "buttonSort";
+            this.buttonSort.Size = new System.Drawing.Size(110, 34);
+            this.buttonSort.TabIndex = 14;
+            this.buttonSort.Text = "Сортировать";
+            this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.ButtonSort_Click);
+            // 
             // ParkingPlace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,5 +260,6 @@
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Button buttonSort;
     }
 }

@@ -7,10 +7,10 @@ using System.Drawing;
 
 namespace labaBuldozerKazakovISEbd_22
 {
-    public class ModBuldozer : BuldozerBase
+    public class ModBuldozer : BuldozerBase, IEquatable<ModBuldozer>
     {
         public Color DopColor { private set; get; }
-        public bool BackSpoiler { private set; get; }
+        public bool BackSpoiler { private set; get; }   
         public bool Bucket { private set; get; }
         public ModBuldozer(int maxSpeed, float weight, Color mainColor, Color dopColor, bool backSpoiler, bool bucket) :
             base(maxSpeed, weight, mainColor, 100, 60)
@@ -62,7 +62,60 @@ namespace labaBuldozerKazakovISEbd_22
             return
            $"{base.ToString()}{separator}{DopColor.ToArgb()}{separator}{BackSpoiler}{separator}{Bucket}";
         }
-
-
+        public bool Equals(ModBuldozer other)
+        {
+            if(other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }            if(DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (BackSpoiler != other.BackSpoiler)
+            {
+                return false;
+            }
+            if (Bucket != other.Bucket)
+            {
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is ModBuldozer bulObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(bulObj);
+            }
+        }
     }
 }

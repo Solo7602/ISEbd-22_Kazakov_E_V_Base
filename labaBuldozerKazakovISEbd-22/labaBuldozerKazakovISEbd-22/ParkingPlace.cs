@@ -134,31 +134,36 @@ MessageBoxIcon.Question) == DialogResult.Yes)
 		{
 			if (buldozer != null && listBoxParking.SelectedIndex > -1)
 			{
-				try
-				{
-					if ((parkingCollection[listBoxParking.SelectedItem.ToString()]) + buldozer)
-					{
-						Draw();
-						logger.Info($"Добавлен автомобиль {buldozer}");
-					}
-					else
-					{
-						MessageBox.Show("Машину не удалось поставить");
-					}
-					Draw();
-				}
-				catch (ParkingOverflowException ex)
-				{
-					MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
-				   MessageBoxIcon.Error);
-					logger.Warn("Переполнение");
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message, "Неизвестная ошибка",
-				   MessageBoxButtons.OK, MessageBoxIcon.Error);
-					logger.Warn("Неизвестная ошибка");
-				}
+                try
+                {
+                    if ((parkingCollection[listBoxParking.SelectedItem.ToString()]) + buldozer)
+                    {
+                        Draw();
+                        logger.Info($"Добавлен автомобиль {buldozer}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Машину не удалось поставить");
+                    }
+                    Draw();
+                }
+                catch (ParkingOverflowException ex)
+                {
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                    logger.Warn("Переполнение");
+                }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn("Неизвестная ошибка");
+                }
 			}
 		}
 
@@ -203,5 +208,15 @@ MessageBoxIcon.Question) == DialogResult.Yes)
 				}
 			}
 		}
+
+        private void ButtonSort_Click(object sender, EventArgs e)
+        {
+            if (listBoxParking.SelectedIndex > -1)
+            {
+                parkingCollection[listBoxParking.SelectedItem.ToString()].Sort();
+                Draw();
+                logger.Info("Сортировка уровней");
+            }
+        }
     }
 }

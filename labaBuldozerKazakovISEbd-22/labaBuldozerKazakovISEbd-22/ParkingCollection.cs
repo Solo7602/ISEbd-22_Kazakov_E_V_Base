@@ -65,12 +65,8 @@ namespace labaBuldozerKazakovISEbd_22
 				{
 					//Начинаем парковку
 					sw.Write($"Parking{separator}{level.Key}{Environment.NewLine}");
-					IBuldozer buldozer = null;
-					for (int i = 0; (buldozer = level.Value.GetNext(i)) != null; i++)
+					foreach (IBuldozer buldozer in level.Value)
 					{
-						if (buldozer != null)
-						{
-							//если место не пустое
 							//Записываем тип машины
 							if (buldozer.GetType().Name == "BuldozerBase")
 							{
@@ -86,7 +82,6 @@ namespace labaBuldozerKazakovISEbd_22
 					}
 				}
 			}
-		}
 		public void LoadData(string filename)
 		{
 			if (!File.Exists(filename))

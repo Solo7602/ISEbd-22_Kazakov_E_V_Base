@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuldozerBase.cs" />
+    <Compile Include="BulldozerCompare.cs" />
     <Compile Include="enum.cs" />
     <Compile Include="FormBulldozerCFG.cs">
       <SubType>Form</SubType>
@@ -62,6 +63,7 @@
     <Compile Include="FormBulldozerCFG.Designer.cs">
       <DependentUpon>FormBulldozerCFG.cs</DependentUpon>
     </Compile>
+    <Compile Include="ParkingAlreadyHaveException.cs" />
     <Compile Include="ParkingCollection.cs" />
     <Compile Include="ParkingNotFoundException.cs" />
     <Compile Include="ParkingOccupiedPlaceException.cs" />
